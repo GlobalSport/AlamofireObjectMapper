@@ -227,7 +227,7 @@ public final class MappableResponseSerializer<T: BaseMappable>: ResponseSerializ
     ///   - emptyResponseCodes:  The HTTP response codes for which empty responses are allowed. Defaults to
     ///                          `[204, 205]`.
     ///   - emptyRequestMethods: The HTTP request methods for which empty responses are allowed. Defaults to `[.head]`.
-    ///   - serializeCallback: 
+    ///   - serializeCallback:
     public init(_ keyPath: String?, mapToObject object: T? = nil, context: MapContext? = nil,
                 emptyResponseCodes: Set<Int> = MappableResponseSerializer.defaultEmptyResponseCodes,
                 emptyRequestMethods: Set<HTTPMethod> = MappableResponseSerializer.defaultEmptyRequestMethods, serializeCallback: @escaping (URLRequest?,HTTPURLResponse?, Data?,Error?) throws -> T) {

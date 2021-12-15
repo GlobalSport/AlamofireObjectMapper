@@ -43,7 +43,7 @@ class AlamofireObjectMapperTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-	
+    
     func testResponseObject() {
         // This is an example of a functional test case.
         let URL = "https://raw.githubusercontent.com/tristanhimmelman/AlamofireObjectMapper/d8bb95982be8a11a2308e779bb9a9707ebe42ede/sample_json"
@@ -163,9 +163,9 @@ class AlamofireObjectMapperTests: XCTestCase {
             let mappedArray = response.value
             
             XCTAssertNotNil(mappedArray, "Response should not be nil")
-			
-			XCTAssertTrue(mappedArray?.count == 3, "Didn't parse correct amount of objects")
-			
+            
+            XCTAssertTrue(mappedArray?.count == 3, "Didn't parse correct amount of objects")
+            
             for forecast in mappedArray! {
                 XCTAssertNotNil(forecast.day, "day should not be nil")
                 XCTAssertNotNil(forecast.conditions, "conditions should not be nil")
@@ -289,72 +289,72 @@ class AlamofireObjectMapperTests: XCTestCase {
 // MARK: - ImmutableMappable
 
 class ImmutableWeatherResponse: ImmutableMappable {
-	let location: String
-	let threeDayForecast: [ImmutableForecast]
-	
-	required init(map: Map) throws {
-		location = try map.value("location")
-		threeDayForecast = try map.value("three_day_forecast")
-	}
+    let location: String
+    let threeDayForecast: [ImmutableForecast]
+    
+    required init(map: Map) throws {
+        location = try map.value("location")
+        threeDayForecast = try map.value("three_day_forecast")
+    }
 
-	func mapping(map: Map) {
-		location >>> map["location"]
-		threeDayForecast >>> map["three_day_forecast"]
-	}
+    func mapping(map: Map) {
+        location >>> map["location"]
+        threeDayForecast >>> map["three_day_forecast"]
+    }
 }
 
 class ImmutableForecast: ImmutableMappable {
-	let day: String
-	let temperature: Int
-	let conditions: String
-	
-	required init(map: Map) throws {
-		day = try map.value("day")
-		temperature = try map.value("temperature")
-		conditions = try map.value("conditions")
-	}
-	
-	func mapping(map: Map) {
-		day >>> map["day"]
-		temperature >>> map["temperature"]
-		conditions >>> map["conditions"]
-	}
-	
+    let day: String
+    let temperature: Int
+    let conditions: String
+    
+    required init(map: Map) throws {
+        day = try map.value("day")
+        temperature = try map.value("temperature")
+        conditions = try map.value("conditions")
+    }
+    
+    func mapping(map: Map) {
+        day >>> map["day"]
+        temperature >>> map["temperature"]
+        conditions >>> map["conditions"]
+    }
+    
 }
 
 // MARK: - Mappable
 
 class WeatherResponse: Mappable {
-	var location: String?
-	var threeDayForecast: [Forecast]?
+    var location: String?
+    var threeDayForecast: [Forecast]?
     var date: Date?
-	
+    
     init(){}
     
-	required init?(map: Map){
+    required init?(map: Map){
 
-	}
-	
-	func mapping(map: Map) {
-		location <- map["location"]
-		threeDayForecast <- map["three_day_forecast"]
-	}
+    }
+    
+    func mapping(map: Map) {
+        location <- map["location"]
+        threeDayForecast <- map["three_day_forecast"]
+    }
 }
 
 class Forecast: Mappable {
-	var day: String?
-	var temperature: Int?
-	var conditions: String?
-	
-	required init?(map: Map){
+    var day: String?
+    var temperature: Int?
+    var conditions: String?
+    
+    required init?(map: Map){
 
-	}
-	
-	func mapping(map: Map) { 
-		day <- map["day"]
-		temperature <- map["temperature"]
-		conditions <- map["conditions"]
-	}
+    }
+    
+    func mapping(map: Map) {
+        day <- map["day"]
+        temperature <- map["temperature"]
+        conditions <- map["conditions"]
+    }
 }
     
 struct WeatherResponseImmutable: ImmutableMappable {
