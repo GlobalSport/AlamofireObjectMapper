@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "AlamofireObjectMapper",
     platforms: [
-            .iOS(.v12)
+        .macOS(.v10_12),.iOS(.v12)
         ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
